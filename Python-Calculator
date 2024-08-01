@@ -1,0 +1,100 @@
+from tkinter import *
+
+#1.window creation
+w=Tk()
+w.title("Calculator")
+
+
+#2.entry field creation
+e=Entry(font='Times 22')
+e.grid(row=0,column=0,columnspan=3)
+
+#5.function creation
+
+def click_button(n):
+    current=e.get()
+    e.delete(0,len(e.get()))
+    e.insert(0,str(current)+str(n))
+def clear():
+    e.delete(0,len(e.get()))
+def add():
+    first_number=e.get()
+    e.delete(0,len(e.get()))
+    global op
+    op='+'
+    global f_num
+    f_num=int(first_number)
+def subtract():
+    first_number=e.get()
+    e.delete(0,len(e.get()))
+    global op
+    op='-'
+    global f_num
+    f_num=int(first_number)
+def multiply():
+    first_number=e.get()
+    e.delete(0,len(e.get()))
+    global op
+    op='*'
+    global f_num
+    f_num=int(first_number)
+def devide():
+    first_number=e.get()
+    e.delete(0,len(e.get()))
+    global op
+    op='/'
+    global f_num
+    f_num=int(first_number)
+def button_equal():
+    second_number=int(e.get())
+    e.delete(0,len(e.get()))
+    if op=='+':
+        e.insert(0,f_num+second_number)
+    elif op=='-':
+        e.insert(0,f_num-second_number)
+    elif op=='*':
+        e.insert(0,f_num * second_number)
+    elif op=='/':
+        e.insert(0,f_num/second_number)
+
+#3.button creation
+one=Button(w,text='1',font='Times 16',padx=40,pady=20,command=lambda:click_button(1))
+two=Button(w,text='2',font='Times 16',padx=40,pady=20,command=lambda:click_button(2))
+three=Button(w,text='3',font='Times 16',padx=40,pady=20,command=lambda:click_button(3))
+four=Button(w,text='4',font='Times 16',padx=40,pady=20,command=lambda:click_button(4))
+five=Button(w,text='5',font='Times 16',padx=40,pady=20,command=lambda:click_button(5))
+six=Button(w,text='6',font='Times 16',padx=40,pady=20,command=lambda:click_button(6))
+seven=Button(w,text='7',font='Times 16',padx=40,pady=20,command=lambda:click_button(7))
+eight=Button(w,text='8',font='Times 16',padx=40,pady=20,command=lambda:click_button(8))
+nine=Button(w,text='9',font='Times 16',padx=40,pady=20,command=lambda:click_button(9))
+zero=Button(w,text='0',font='Times 16',padx=40,pady=20,command=lambda:click_button(0))
+clear=Button(w,text='Clear',font='Times 16',padx=80,pady=20,command=clear)
+plus=Button(w,text='+',font="Times 16",padx=40,pady=20,command=add)
+minus=Button(w,text='-',font='Times 16',padx=40,pady=20,command=subtract)
+into=Button(w,text='*',font='Times 16',padx=40,pady=20,command=multiply)
+by=Button(w,text='/',font='Times 16',padx=40,pady=20,command=devide)
+equal=Button(w,text='=',font="Times 16", padx=95,pady=20,command=button_equal)
+
+
+
+
+#4.positoning
+seven.grid(row=1,column=0)
+eight.grid(row=1,column=1)
+nine.grid(row=1,column=2)
+four.grid(row=2,column=0)
+five.grid(row=2,column=1)
+six.grid(row=2,column=2)
+one.grid(row=3,column=0)
+two.grid(row=3,column=1)
+three.grid(row=3,column=2)
+zero.grid(row=4,column=0)
+clear.grid(row=4,column=1,columnspan=2)
+plus.grid(row=5,column=0)
+equal.grid(row=5,column=1,columnspan=2)
+minus.grid(row=6,column=0)
+into.grid(row=6,column=1)
+by.grid(row=6,column=2)
+
+
+w.mainloop()
